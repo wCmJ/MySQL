@@ -1,0 +1,168 @@
+1.Relational Databases
+    A relational database organizes data in tables. A table has rows(or records) and columns(or fields).
+
+2.Structure Query Language(SQL)
+    Is designed for interacting with the relational databases.
+    Defines a set of commands, such as SELECT, INSERT, UPDATE, DELETE, CREATE TABLE, DROP TABLE, and etc.
+    
+    Database: studentdb
+    Table: class101
+    +-----------+--------------------+-------------+
+    | id (INT)  | name (VARCHAR(50)) | gpa (FLOAT) |
+    +-----------+--------------------+-------------+
+    |   1001    | Tan Ah Teck        |  4.5        |
+    |   1002    | Mohammed Ali       |  4.8        |
+    |   1003    | Kumar              |  4.8        |
+    |   1004    | Kevin Jones        |  4.6        |
+    +-----------+--------------------+-------------+
+    
+    
+    SELECT:
+            SELECT column1, column2,... FROM tableName WHERE criteria
+            SELECT * FROM tableName WHERE criteria
+            
+            ----EXAMPLES
+            1.SELECT name, gpa FROM class101
+            2.SELECT * FROM class101
+            3.SELECT name, gpa FROM class101 WHERE gpa >= 4.7
+            4.SELECT name, gpa FROM class101 WHERE name='Tan Ah Teck'
+            5.SELECT name FROM class101 WHERE name LIKE 'k%'    //LIKE for string pattern-matching, % matches zero or more characters, _ matches one character.
+            6.SELECT * FROM class101 WHERE gpa > 4 AND name LIKE 'k%' ORDER BY gpa DESC, name ASC     //use AND, OR, NOT to combine simple condition, order the results in DESC(descending) or ASC(ascending).
+            
+            column LIKE ''
+            ORDER BY column DESC/ASC
+            
+    DELETE:
+            DELETE FROM tableName WHERE criteria
+            
+            ----EXAMPLES
+            1.DELETE FROM class101      //delete all rows from the table class101.
+            2.DELETE FROM class101 WHERE id=33      //delete rows that meet the criteria.
+    
+    INSERT:
+            INSERT INTO tableName VALUES(firstColumnValue,..., lastColumnValue)     --All columns
+            INSERT INTO tableName (column1,column2,...) VALUES(value1,value2,...)   --Selected columns
+            
+            ----EXAMPLES
+            1.INSERT INTO class101 VALUES(1001,'Tan Ah Teck',4.5)   //List value of all columns.
+            2.INSERT INTO class101 (name,gpa) VALUES('Peter Jones',4.55)    //Missing fields will be set to their default values or NULL.
+            
+    UPDATA:
+            UPDATE tableName SET column = value WHERE criteria
+            
+            ----EXAMPLES
+            UPDATE class101 SET gpa=5.0     //ALL rows
+            UPDATE class101 SET gpa = gpa +1.0 WHERE name = 'Tan Ah Teck'     //Selected rows
+            
+    CREATE TABLE:
+            CREATE TABLE tableName(column1Name column1Type, column2Name column2Type,...)
+            
+            ----EXAMPLES
+            CREATE TABLE class101 (id INT, name VARCHAR(50), gpa FLOAT)
+            
+    DROP TABLE
+            DROP TABLE tableName
+            
+            ----EXAMPLES
+            DROP TABLE class101     //delete the table. Beware that there is no undo.
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
