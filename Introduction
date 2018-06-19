@@ -66,18 +66,58 @@
             ----EXAMPLES
             DROP TABLE class101     //delete the table. Beware that there is no undo.
             
+3.SQL is a programming language for interacting with relational databases.
+  MySQL is one of the most used, industrial-strength, open-source and free Relational Database Management System(RDBMS)。
+  
+  MySQL Client(s)  <------------------>  MySQL Server(IPAddress:Port)
+    Client-side        TCP/IP Network      Server-side    Database_1(Table_1_1,Table_1_2,...); Database_2(Table_2_1,...)
+    Programs                               Programs
             
+  MySQL operates as a client-server system over TCP/IP network. The server runs on a machine with an IP address, on a chosen TCP port number.
+  The default TCP port number for MySQL is 3306.
+  A MySQL database server contains one or more databases. 
+  A database contains one or more tables.
+  A table consists of rows(or records) and columns(or fields).
             
+4.Install MySQL.
+  1.Create a directory: C:\mySQL
+  2.Download MySQL ZIP ARCHIVE and UNZIP into C:\mySQL, then rename. get C:\mySQL\mysql
+  3.Initialize the database: start a CMD(run as administrator), get into C:\mySQL\mysql, run mysqld --initialize --console, we get a temporary password of user root@localhost.
+  4.If forgot password, DELETE the entire directory, then repeat step 2 and 3.
+  
+  The server program is called "mysqld", d stands for daemon - a daemon is a non-interactive process running in the background.
+  The client program is called "mysql"
+  ALL are kept in the "bin" sub-directory of the MySQL installed directory.
+  
+5.Startup and shutdown Server
+  1.startup:In CMD, run "mysqld --console", --console option directs the output messages to the console, without this option, you will see a bland screen.
+  2.shundown:press Ctrl-C
             
-            
-            
-            
-            
-            
-            
-            
-            
-            
+6.Start a client
+  in CMD, run "mysql -u root -p", then input the previous temporary password.
+  
+7.Change the password   
+  In CMD, run "alert user 'root'@'localhost' identified by 'NEWPASSWORD';"
+  
+8.Create a New user
+  1.In CMD, run "mysql -u root -p", then run "create user 'myuser'@'localhost' identified by 'password';"
+  2.run "grant all on *.* to 'myuser'@'localhost';"
+  
+  Explanation
+    1.create user to create a new user, who can login to the server locally from the same machine, but not remotely from another machine.
+    2.the newly created user has NO privilege to perform any database operation including select. 
+      use the "grant" command to grant "all" the privileges(including select, insert, delete, and so on) to this new user on ALL the databases and ALL the tables(on *.*).
+      grant select, insert, update on stuedntdb.* it can issue select, insert and update(but no delete, create/drop table)on ALL the tables of the database strdentedb only.
+      
+9.Exercise
+  1.create database if not exists studentdb;
+  2.show databases;
+  3.use studentdb;
+  4.drop table if exists class101;
+  5.create table class101 (id int, name varchar(50), gpa float);
+  6.show tables;
+  7.describe class101;
+  8.
             
             
             
