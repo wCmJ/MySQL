@@ -101,7 +101,14 @@
   
 8.Create a New user
   1.In CMD, run "mysql -u root -p", then run "create user 'myuser'@'localhost' identified by 'password';"
+    We use the command "create user" to create a new user called 'myuser'@'localhost', 
+    who can login to the server locally from the same machine (but not remotely from another machine), with password "xxxx".              
   2.run "grant all on *.* to 'myuser'@'localhost';"
+    The newly created user has NO privilege to perform any database operation including select. 
+    We use the "grant" command to grant "all" the privileges (including select, insert, delete, and so on) to this new user on ALL the databases and ALL the tables ("on *.*"). 
+    This new user, in practice, has the same privilege as root, except that it cannot issue grant command. 
+    For production, you should grant only the necessary privileges on selected databases and selected tables, e.g., 
+    "grant select, insert, update on studentdb.*" - it can issue select, insert and update (but no delete, create/drop table) on ALL the tables of the database studentdb only.   
   
   Explanation
     1.create user to create a new user, who can login to the server locally from the same machine, but not remotely from another machine.
@@ -117,7 +124,7 @@
   5.create table class101 (id int, name varchar(50), gpa float);
   6.show tables;
   7.describe class101;
-  8.
+  8.source mycommands.sql(store a set of SQL commands in a file)
             
             
             
@@ -155,4 +162,56 @@
        ORDER BY columnAName ASC|DESC, columnBName ASC|DESC, ...;
   
     -- Running a script of MySQL statements
-    SOURCE full-Path-Filename         
+    SOURCE full-Path-Filename        
+    
+Summary:
+    -- General
+    ;           -- Sends command to server for processing (or \g)
+    \c          -- Cancels (aborts) the current command
+
+    -- Database-level
+    DROP DATABASE databaseName;                 -- Deletes the database
+    DROP DATABASE IF EXISTS databaseName;       -- Deletes only if it exists
+    CREATE DATABASE databaseName;               -- Creates a new database
+    CREATE DATABASE IF NOT EXISTS databaseName; -- Creates only if it does not exists
+    SHOW DATABASES;                             -- Shows all databases in this server
+
+    -- Set default database.
+    -- Otherwise you need to use the fully-qualified name, in the form 
+    --   of "databaseName.tableName", to refer to a table.
+    USE databaseName
+
+    -- Table-level
+    DROP TABLE tableName;
+    DROP TABLE IF EXISTS tableName;
+    CREATE TABLE tableName (column1Definition, column2Definition, ...);
+    CREATE TABLE IF NOT EXISTS tableName (column1Definition, column2Definition, ...);
+    SHOW TABLES;              -- Shows all the tables in the default database
+    DESCRIBE tableName;       -- Describes the columns for the table
+    DESC tableName;           -- Same as above
+
+    -- Record-level (CURD - create, update, read, delete)
+    INSERT INTO tableName VALUES (column1Value, column2Value,...);
+    INSERT INTO tableName (column1Name, ..., columnNName) 
+       VALUES (column1Value, ..., columnNValue);
+    DELETE FROM tableName WHERE criteria;
+    UPDATE tableName SET columnName = expression WHERE criteria;
+    SELECT column1Name, column2Name, ... FROM tableName 
+       WHERE criteria
+       ORDER BY columnAName ASC|DESC, columnBName ASC|DESC, ...;
+
+    -- Running a script of MySQL statements
+    SOURCE full-Path-Filename
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
