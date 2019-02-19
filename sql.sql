@@ -2,7 +2,7 @@ INT             4-BYTE
 BIGINT          8-BYTE
 REAL/FLOAT(24)  4-BYTE 
 DOUBLE          8-BYTE
-DECIMAL(M,N)    总共20位，小数10位
+DECIMAL(M,N)    总共M位，小数N位
 CHAR(N)         定长字符串，N个字符的字符串
 VARCHAR(N)      变长字符串，0~N个字符的字符串
 BOOLEAN         True/False
@@ -79,8 +79,16 @@ LIMIT 15 OFFSET 30 == LIMIT 30, 15
 多表查询：
     SELECT * FROM TABLE1, TABLE2;
         得到的结果为行的乘积，列相加
-            
-
+    SELECT s.id sid, s.name, s.gender, s.score, c.id cid, c.name cname FROM students s, classes c;
+    SELECT s.id sid, s.name, s.gender, s.score, c.id cid, c.name cname FROM students s, classes c WHERE s.gender='M' AND c.id=1;
+    
+连接查询：
+    INNER JOIN: 只返回同时存在于两张表的数据
+    RIGHT OUTER JOIN: 返回右表都存在的行
+    LEFT OUTER JOIN: 返回左表都存在的行
+    FULL OUTER JOIN: 把两行表的所有数据全部选择出来，并且，自动把对方不存在的列填充为NULL。
+    SELECT COLUMN FROM TABLE1 INNER JOIN TABLE2 ON s.class_id=c.id;
+    
 
 
 
