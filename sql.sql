@@ -44,6 +44,13 @@ in command line:
     ALTER TABLE students
     DROP FOREIGN KEY fk_class_id
 
+ORDER BY score;(按score从低到高进行排列) 
+== 
+ORDER BY score ASC;
+
+ORDER BY score DESC;(按score从搞到低进行排列)
+ORDER BY score DESC, gender;(按score从高到低排列，如果score相同，按照gender从低到高排列)
+默认按照主键进行排序
 SELECT * FROM TABLE1
 SELECT * FROM TABLE1 WHERE C1 > 1 AND C2 > 2 OR C3 > 3 NOT C4 = 4(PRIORITY NOT AND OR);
 SELECT COLUMN1, COLUMN2, COLUMN3 FROM TABLE1 WHERE CONDITION1;
