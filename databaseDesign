@@ -1,0 +1,23 @@
+Bad database design is sure to cause regrets down the road.
+
+1. Design questions:
+        what are the business requirements?
+        what tables will I need to fulfill those requirements?
+        what columns will each table contain?
+        How will the tables be normalized?
+        What will their parent/child relationships be?
+        requirements    ->      tables      ->      columns     ->      tables normalized       ->      tables relationships
+2. Data questions
+        How much?
+        Who/What?
+        Where come from?
+        Processes automaticlly?
+        
+For centralized databases, security factors should be considered.
+   Security questions
+        Who should have access to this database?
+        Who should have access to which tables? Read-only access? Write access?
+        Is this database critical to business operations?
+        
+        
+        
