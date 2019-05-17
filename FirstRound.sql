@@ -99,11 +99,23 @@ Rtrim()
 soundex()
 substring()
 Date()    get date only, not contain exact time
-
-
-
-
-
+Time()    
+select da, mo from orders where date(order_date) between '2019-07-08' and '2019-09-11';
+select da, mo from orders where Year(order_date) = 2018 and Month(order_date) = 9;
+Abs()   absolute
+Cos()
+Exp()
+Mod()
+Pi()
+--------------------------------------------------------------------------------------------------------------------------------
+row lines number
+sum of all lines
+max,min,mid of lines
+AVG()   COUNT()   MAX()   MIN()   SUM()
+count(*) contains lines with NULL
+AVG()/MAX()/MIN()/SUM() discards lines with NULL
+select AVG(DISTINCT prod_price) AS avg_price from products where vend_id = 1003;
+error: count(distinct)
 
 
 
