@@ -81,7 +81,24 @@ select column1, column2 from table1 where column1 REGEXP '\\.';
 $       end of text
 [[:<:]] start of string
 [[:>:]] end of string
-
+--------------------------------------------------------------------------------------------------------------------------------
+select concat(column1,'(',column2,')') from table1;
+select concat(column1,'(',column2,')') as newtitle from table1;
+select id, title, id+id as doubleid from books;
++   -   *   /
+--------------------------------------------------------------------------------------------------------------------------------
+select id, title, upper(title) as UPP from books;
+Left()  return left string of total
+Right()
+Length()
+Locate()
+Lower()
+Upper()
+Ltrim()
+Rtrim()
+soundex()
+substring()
+Date()    get date only, not contain exact time
 
 
 
