@@ -116,9 +116,46 @@ count(*) contains lines with NULL
 AVG()/MAX()/MIN()/SUM() discards lines with NULL
 select AVG(DISTINCT prod_price) AS avg_price from products where vend_id = 1003;
 error: count(distinct)
-
-
-
+--------------------------------------------------------------------------------------------------------------------------------
+select vend_id, COUNT(*) as num_prods FROM products group by vend_id;
+group by指示MySQL分组数据，然后对每个组而不是整个结果进行聚集。
+可嵌套、若嵌套汇总最后规定的分组、group by子句每列都必须是检所列或有效表达式、除聚集计算语句外，select每列都必须在group by中、NULL值作为一个分组返回
+WHERE子句、GROUP BY子句、ORDER BY子句
+select vend_id, count(*) as num_prods from products group by vend_id with rollup;
+WITH ROLLUP：可以得到每个分组以及每个分组汇总级别的值
+WHERE过滤行，HAVING过滤分组
+select cust_id, count(*) as orders from orders group by cust_id HAVING count(*) >= 2;
+create table productnotes
+(
+  note_id int not null auto_increment,
+  prod_id char(10) not null,
+  note_date datetime not null,
+  note_text text null,
+  primary key(note_id),
+  fulltext(note_text)
+)ENGINE=MyISAM;
+create table customers
+(
+  cust_id int not null auto_increment,
+  cust_name char(50) not null,
+  cust_address char(50) null,
+  cust_city char(50) null,
+  cust_state char(5) NULL,
+  cust_zip char(10) null,
+  cust_country char(50) null,
+  cust_contact char(50) null,
+  cust_email char(255) null,
+  PRIMARY KEY (cust_id)
+)ENGINE=InnoDB;
+create table orderitems
+(
+  order_num int not null,
+  order_item int not null,
+  prod_id char(10) not null,
+  quantity int not null,
+  item_price decimal(8,2) not null,
+  PRIMARY KEY(order_num, order_item)
+)ENGINE=InnoDB;  
 
 SELECT 
 ORDER BY(default:ASC, DESC)
