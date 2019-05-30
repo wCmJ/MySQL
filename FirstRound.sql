@@ -163,6 +163,11 @@ WHERE(=, !=, <, >, <>, <=, >=, BETWEEN)(AND, OR, IN, NOT)(LIKE %/_)
 
 
 
+select s.s1, s.s2, c.c1, c.c2 from stu as s inner join cla as c on s.id = c.id;
+1. select main table s
+2. select secondary table c
+3. set link condition with on ...
+4. add other condition where/order bu
 
 
 
