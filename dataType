@@ -1,0 +1,82 @@
+1.  digit 
+2.  string
+3.  date
+
+INT:
+    TINYINT     1-byte  
+    SMALLINT    2-byte
+    MEDIUMINT   3-byte
+    INT         4-byte
+    BIGINT      8-byte
+    INTEGER is same with INT
+NUMERIC/DECIMAL:
+    DECIMAL(M,D)
+    DECIMAL(5,2): -999.99 - 999.99
+    M,D default value: 10, 0
+    rounding: if exceed, error
+    M: 1~65
+    D: 0~30, <= M
+    
+FLOAT, REAL, DOUBLE:
+    FLOAT(M,D);
+    
+BIT(M):
+    M default: 1
+    create table t(b BIT(8));
+    insert into t set b=b'11111111';
+    insert into t set b=b'1010';
+    insert into t set b=b'0101';
+    select b+0, BIN(b+0), OCT(b+0), HEX(b+0) from t;
+    +------+----------+--------+--------+
+    | b+0  | BIN(b)   | OCT(b) | HEX(b) |
+    +------+----------+--------+--------+   
+    |  255 | 11111111 | 377    | FF     |
+    |   10 | 1010     | 12     | A      |
+    |    5 | 101      | 5      | 5      |
+    +------+----------+--------+--------+
+    
+CHAR VARCHAR:
+    CHAR(M), VARCHAR(M): M is the biggest number, default is 255;
+    CHAR will keep fixed length, when less, will inserted with space; latest space will not be differented with inserted.
+    VARCHAR only keep needed length, space from user will be keeped.
+
+BINARY/VARBINARY:
+    
+    
+    
+ENUM:
+    create table shirts(
+        name varchar(40),
+        size ENUM('x-small','small','medium','large','x-large'));
+        insert into shirts values(('dress shirt', 'large'),('t-shirt','medium'),('polo shirt','small'));
+        update shirts set size='small' where size='large';
+        select name, size+0 from shirts where size='small';
+        
+    
+SET:
+    create table user_permission(
+        id int unsigned not null auto_increment,
+        user_id int not null,
+        permission set('阅读'，'评论','发帖') not null,
+        primary key(id),
+        unique(user_id));
+    show columns from user_permission;
+    desc user_permission;
+    insert into user_permission values(0,1,),(),();
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
